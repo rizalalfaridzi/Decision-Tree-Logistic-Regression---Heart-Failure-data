@@ -1,0 +1,15 @@
+#############
+###IIKKIIT###
+##IIII##KK###
+##IIKIIIIII##
+##IIIIIIIII##
+#IIIIIIIIIII#
+#IIII##IIIII#
+#IIIII#IIII##
+##IIIIIIIII##
+#IKKIIIIII###
+#I##IF#IIIII#
+#IIIIT#IIIII#
+#I#II##III###
+#III^III#####
+#############
