@@ -8,13 +8,13 @@ The following files are provided:
 
 This file contains a class representing Laser Tank game map. This class contains a number of functions which will be useful in developing your solver.
 
-The static method
+The class method
 ~~~~~
 LaserTankMap.process_input_file(filename)
 ~~~~~
 can be used to parse input files (testcases) and produce a LaserTankMap instance based on the input file.
 
-The class method
+The method
 ~~~~~
 apply_move(self, move)
 ~~~~~
@@ -22,7 +22,7 @@ applies an action to the Laser Tank game map, changing it's state. Note that thi
 
 This method returns LaserTankMap.SUCCESS, LaserTankMap.COLLISION or LaserTankMap.GAME_OVER depending on the result of the applied move.
 
-The class method
+The method
 ~~~~~
 is_finished(self)
 ~~~~~
