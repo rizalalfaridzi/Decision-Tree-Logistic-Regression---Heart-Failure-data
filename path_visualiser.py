@@ -31,7 +31,7 @@ def main(arglist):
     game_map.render()
 
     f = open(soln_file, 'r')
-    moves = f.readline().split(',')
+    moves = f.readline().strip().split(',')
 
     # apply each move in sequence
     for i in range(len(moves)):
