@@ -11,7 +11,7 @@ Laser Tank game.
 
 COMP3702 2020 Assignment 1 Support Code
 
-Last updated by njc 02/08/20
+Last updated by njc 16/08/20
 """
 
 
@@ -131,8 +131,8 @@ class LaserTankMap:
             self.player_y = player_y
             self.player_heading = player_heading
 
-    @classmethod
-    def process_input_file(cls, filename):
+    @staticmethod
+    def process_input_file(filename):
         """
         Process the given input file and create a new map instance based on the input file.
         :param filename: name of input file
@@ -140,9 +140,12 @@ class LaserTankMap:
         f = open(filename, 'r')
 
         rows = []
+        i = 0
         for line in f:
-            if len(line.strip()) > 0:
+            # skip optimal steps and time limit
+            if i > 1 and len(line.strip()) > 0:
                 rows.append(list(line.strip()))
+            i += 1
 
         f.close()
 
@@ -175,7 +178,7 @@ class LaserTankMap:
         assert flag_count > 0, "LaserTank Map Error: No goal position given"
         assert flag_count < 2, "LaserTank Map Error: More than one goal position given"
 
-        return cls(row_len, num_rows, rows)
+        return LaserTankMap(row_len, num_rows, rows)
 
     def apply_move(self, move):
         """

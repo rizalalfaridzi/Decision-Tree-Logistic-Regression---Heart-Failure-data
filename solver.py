@@ -10,7 +10,9 @@ COMP3702 2020 Assignment 1 Support Code
 
 
 #
-# Code for any classes or functions you need can go here
+#
+# Code for any classes or functions you need can go here.
+#
 #
 
 
@@ -33,11 +35,22 @@ def main(arglist):
     input_file = arglist[0]
     output_file = arglist[1]
 
+    # Read the input testcase file
+    game_map = LaserTankMap.process_input_file(input_file)
+
+    actions = []
+
     #
-    # Code for your main method can go here
+    #
+    # Code for your main method can go here.
+    #
+    # Your code should find a sequence of actions for the agent to follow to reach the goal, and store this sequence
+    # in 'actions'.
+    #
     #
 
-    pass    # you can remove this line
+    # Write the solution to the output file
+    write_output_file(output_file, actions)
 
 
 if __name__ == '__main__':

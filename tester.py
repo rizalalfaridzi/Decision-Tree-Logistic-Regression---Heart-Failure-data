@@ -9,10 +9,37 @@ Tester script.
 Use this script to test whether your output files are valid solutions. You
 should avoid modifying this file directly.
 
+You may import methods from this file into your solution if you wish.
+
 COMP3702 2020 Assignment 1 Support Code
 
-Last updated by njc 02/08/20
+Last updated by njc 16/08/20
 """
+
+
+def get_optimal_number_of_steps(filename):
+    """
+    Get the number of steps for an optimal solution for the given testcase file.
+    :param filename: name of testcase file
+    :return: number of steps in optimal solution
+    """
+    f = open(filename, 'r')
+    steps = int(f.readline().strip())
+    f.close()
+    return steps
+
+
+def get_time_limit(filename):
+    """
+    Get the time limit for the given testcase file (in seconds).
+    :param filename: name of testcase file
+    :return: amount of time given to solve this
+    """
+    f = open(filename, 'r')
+    _ = f.readline()
+    time_limit = float(f.readline().strip())
+    f.close()
+    return time_limit
 
 
 def main(arglist):
@@ -22,13 +49,13 @@ def main(arglist):
     """
     if len(arglist) != 2:
         print("Running this file tests whether the given output file is a valid solution to the given map file.")
-        print("Note that this does not indicate whether the output file is optimal in the number of steps taken.")
         print("Usage: tester.py [map_file_name] [output_file_name]")
         return
 
     map_file = arglist[0]
     soln_file = arglist[1]
 
+    optimal_steps = get_optimal_number_of_steps(map_file)
     game_map = LaserTankMap.process_input_file(map_file)
 
     f = open(soln_file, 'r')
@@ -50,8 +77,13 @@ def main(arglist):
         return -1
 
     if game_map.is_finished():
-        print("Puzzle solved in " + str(len(moves)) + " steps!")
-        return len(moves)
+        print("Puzzle solved.")
+        if len(moves) == optimal_steps:
+            print("Solution is optimal (" + str(len(moves)) + " steps)!")
+            return 0
+        else:
+            print("Solution is " + str(len(moves) - optimal_steps) + " steps longer than optimal.")
+            return len(moves) - optimal_steps
     else:
         print("ERROR: Goal not reached after all actions performed.")
         return -1

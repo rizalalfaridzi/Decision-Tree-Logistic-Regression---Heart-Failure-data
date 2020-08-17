@@ -1,6 +1,6 @@
 # Assignment 1 Support Code
 
-This is the support code for COMP3702 2020 Assignment 1.
+This is the support code for COMP3702 2019 Assignment 2.
 
 The following files are provided:
 
@@ -8,13 +8,13 @@ The following files are provided:
 
 This file contains a class representing Laser Tank game map. This class contains a number of functions which will be useful in developing your solver.
 
-The class method
+The static method
 ~~~~~
 LaserTankMap.process_input_file(filename)
 ~~~~~
 can be used to parse input files (testcases) and produce a LaserTankMap instance based on the input file.
 
-The method
+The instance method
 ~~~~~
 apply_move(self, move)
 ~~~~~
@@ -22,7 +22,7 @@ applies an action to the Laser Tank game map, changing it's state. Note that thi
 
 This method returns LaserTankMap.SUCCESS, LaserTankMap.COLLISION or LaserTankMap.GAME_OVER depending on the result of the applied move.
 
-The method
+The instance method
 ~~~~~
 is_finished(self)
 ~~~~~
@@ -42,10 +42,24 @@ $ python tester.py testcases/<testcase_name>.txt my_solver_output.txt
 ~~~~~
 This will indicate whether your solution file passes all the requirements. Our autograder will make use of a copy of this tester script. To make sure your code is graded correctly, make sure your output files pass this tester.
 
+Additionally, this file contains methods which can be used to check the optimal number of steps and allowed time limit for solving a given test case.
+~~~~~
+get_optimal_number_of_steps(filename)
+get_time_limit(filename)
+~~~~~
+
 **path_visualiser.py**
 
 An animated version of tester which shows each step your agent takes. Use the same way as tester.
 
 **solver.py**
 
-A template for you to write your solution. All of the code you write should go inside this file. To make sure your code is graded correctly, do not rename this file.
+A template for you to write your solution. Your main function should go inside this file. To make sure your code is graded correctly, do not rename this file.
+
+This file contains the function
+~~~~~
+write_output_file(filename, actions)
+~~~~~
+which writes an output file in the correct format based on a given list of actions (i.e. the sequence of actions the agent should perform to reach the goal). You should use this method to write your output file.
+
+
