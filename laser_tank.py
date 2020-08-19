@@ -184,7 +184,9 @@ class LaserTankMap:
         """
         Apply a player move to the map.
         :param move: self.MOVE_FORWARD, self.TURN_LEFT, self.TURN_RIGHT or self.SHOOT_LASER
-        :return: True if move was successful, false if move could not be completed
+        :return: LaserTankMap.SUCCESS if move was successful and no collision (or no effect move) occurred,
+                 LaserTankMap.COLLISION if the move resulted collision or had no effect,
+                 LaserTankMap.GAME_OVER if the move resulted in game over
         """
 
         if move == self.MOVE_FORWARD:
